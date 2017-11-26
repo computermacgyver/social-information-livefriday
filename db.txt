@@ -1,0 +1,22 @@
+--DB
+
+RENAME TABLE `votes` TO `votes_2015-05-15-1600`
+
+CREATE TABLE `votes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ip` varchar(15) NOT NULL,
+  `datetime` int(11) NOT NULL,
+  `pic` tinyint(4) NOT NULL,
+  `treatment` tinyint(4) NOT NULL COMMENT '0=control,1=treatment',
+  PRIMARY KEY (`id`),
+  KEY `VOTES` (`pic`,`treatment`),
+  KEY `TREAT` (`treatment`)
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
+
+
+DESCRIBE votes;
+
+SELECT * FROM votes;
+SELECT pic,treatment,COUNT(*) FROM votes GROUP BY pic,treatment;
+
+
